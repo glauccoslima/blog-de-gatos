@@ -1,0 +1,418 @@
+/* Reseta as margens, paddings e box-sizing em todos os elementos para garantir consistência entre diferentes navegadores. */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  /* Melhora a renderização do texto em navegadores Webkit (Chrome, Safari). */
+  -moz-osx-font-smoothing: grayscale;
+  /* Melhora a renderização do texto em Firefox em OS X/macOS. */
+}
+
+/* Define variáveis globais de cor e tamanho de fonte base para fácil manutenção e acessibilidade. */
+:root {
+  font-size: 62.5%;
+  /* Define o tamanho da fonte base para 10px para facilitar o cálculo de rem (62.5% de 16px padrão = 10px). */
+  --hue: 195;
+  /* Define um tom base para ser usado em várias cores através de variáveis. */
+  --color-Brand-Colors-Explorer-dark: hsl(var(--hue), 91%, 25%);
+  --color-Search-Input: hsla(0, 0%, 100%, 0.2);
+  --color-logo: hsl(196, 100%, 98%);
+  --color-search-input-text: hsl(0, 0%, 100%);
+  --color-footer: hsl(var(--hue), 46%, 40%);
+
+}
+
+/* Define a fonte padrão para elementos html, body e input. */
+html,
+body,
+input {
+  font-family: "Mulish", sans-serif;
+  /* Usa a fonte 'Mulish' para estes elementos. */
+}
+
+/* Define o tamanho de fonte padrão para o corpo do documento. */
+body {
+  font-size: 1.6rem;
+  /* Equivale a 16px, seguindo o tamanho base definido em :root. */
+}
+
+/* Estrutura principal da página utilizando display grid. */
+#central {
+  display: grid;
+  grid-template-rows: max-content 1fr max-content;
+  /* Divide o layout em cabeçalho, conteúdo principal e rodapé. */
+  height: 100vh;
+  /* Ocupa a altura total da viewport. */
+}
+
+/* Define o padding e a largura mínima para containers, facilitando a reutilização. */
+.container {
+  padding: 1.6rem 2.8rem;
+  min-width: 100%;
+  margin: 0 auto;
+  /* Centraliza o container. */
+}
+
+/* Ajustes específicos para imagens de gatos pretos, garantindo cobertura total da largura. */
+.imagemgatopreto {
+  min-width: 100%;
+  /* Garante que a imagem cubra toda a largura disponível. */
+}
+
+/* Posicionamento e padding específicos para um container, provavelmente para ajustar a visualização de conteúdo adicional. */
+.containerma {
+  position: relative;
+  padding-left: 2.2rem;
+  padding-right: 2.6rem;
+}
+
+/* Estilização adicional para as imagens de gatos pretos, ajustando a largura e as margens para alinhamento fora do container padrão. */
+.imagemgatopreto {
+  width: calc(100% + 2.2rem + 2.6rem);
+  /* Calcula a largura total incluindo os paddings laterais. */
+  margin-left: -2.2rem;
+  /* Compensa o padding esquerdo do container. */
+  margin-right: -2.6rem;
+  /* Compensa o padding direito do container. */
+  display: block;
+}
+
+/* Estiliza o rodapé, definindo o alinhamento do texto e o peso da fonte. */
+footer p {
+  text-align: center;
+  /* Centraliza o texto dentro do parágrafo do rodapé. */
+  font-weight: 600;
+  /* Torna o texto semi-negrito. */
+}
+
+/* Define a cor de fundo do cabeçalho e estiliza a navegação e o logo. */
+header {
+  background-color: var(--color-Brand-Colors-Explorer-dark);
+  /* Usa a variável de cor definida para o fundo do cabeçalho. */
+}
+
+/* Estilização flexível para cabeçalho, navegação e listas, facilitando o alinhamento e o espaçamento entre itens. */
+header,
+nav,
+nav ul {
+  display: flex;
+  align-items: center;
+  /* Centraliza verticalmente os itens. */
+  gap: 2.6rem;
+  /* Define um espaçamento uniforme entre os itens. */
+}
+
+/* Configurações específicas para o formulário dentro do cabeçalho, permitindo que ele ocupe o espaço restante. */
+header form {
+  flex: 1;
+  /* Permite que o formulário expanda para ocupar o espaço disponível. */
+}
+
+/* Estilizações específicas para o logo, definindo dimensões, padding, forma e cor de fundo. */
+.logo {
+  width: 4.0rem;
+  /* Largura do logo. */
+  height: 4.0rem;
+  /* Altura do logo. */
+  padding: .8rem;
+  /* Espaçamento interno ao redor do logo. */
+  border-radius: 50%;
+  /* Torna o fundo do logo circular. */
+  background-color: var(--color-logo);
+  /* Define a cor de fundo do logo. */
+}
+
+/* Estilizações para avatares, garantindo dimensões, ajuste de imagem e forma. */
+.avatar {
+  width: 4.2rem;
+  /* Largura do avatar. */
+  height: 4.2rem;
+  /* Altura do avatar. */
+  object-fit: cover;
+  /* Garante que a imagem do avatar preencha o espaço sem distorcer. */
+  border-radius: 50%;
+  /* Torna o avatar circular. */
+}
+
+/* Oculta acessivelmente a label do input, mantendo-a disponível para leitores de tela. */
+.input-wrapper label {
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  /* Posiciona absolutamente para não afetar o layout visualmente, mas mantém acessível para tecnologias assistivas. */
+}
+
+/* Estilização do input dentro de .input-wrapper para garantir uma aparência consistente. */
+.input-wrapper input {
+  width: 100%;
+  /* Ocupa toda a largura disponível do seu contêiner. */
+  padding: 1.6rem;
+  /* Espaçamento interno para um melhor aspecto visual. */
+  border: 0;
+  /* Remove a borda para um estilo mais limpo. */
+  border-radius: .4rem;
+  /* Bordas levemente arredondadas. */
+  background-color: var(--color-Search-Input);
+  /* Cor de fundo definida por variável, para fácil manutenção. */
+  font-size: 1.6rem;
+  /* Tamanho da fonte para legibilidade. */
+  font-weight: 600;
+  /* Peso da fonte para destaque moderado. */
+  color: var(--color-search-input-text);
+  /* Cor do texto, também definida por variável. */
+  line-height: 100%;
+  /* Altura da linha para evitar espaçamento extra entre linhas de texto. */
+}
+
+/* Estiliza o placeholder do input para que combine com a cor do texto. */
+.input-wrapper input::placeholder {
+  color: var(--color-search-input-text);
+}
+
+/* Estilização para títulos H1, aumentando sua importância visual na página. */
+h1 {
+  margin-top: 3.0rem;
+  /* Espaçamento acima do título. */
+  font-size: 2.4rem;
+  /* Tamanho da fonte para destaque. */
+  font-weight: 700;
+  /* Peso da fonte para maior ênfase. */
+  line-height: 160%;
+  /* Altura da linha para melhorar a legibilidade. */
+  margin-bottom: .8rem;
+  /* Espaçamento abaixo do título. */
+}
+
+/* Estilo para ícones, geralmente usado para ações ou links visuais. */
+.icon {
+  justify-content: center;
+  /* Centraliza o conteúdo horizontalmente. */
+  align-items: center;
+  /* Centraliza o conteúdo verticalmente. */
+  padding: 1.2rem;
+  /* Espaçamento interno ao redor do conteúdo. */
+  background-color: var(--color-Brand-Colors-Explorer-dark);
+  /* Cor de fundo do ícone. */
+  width: 4.0rem;
+  /* Largura fixa para consistência. */
+  height: 4.0rem;
+  /* Altura fixa para consistência. */
+  border-radius: 50%;
+  /* Torna o ícone circular. */
+}
+
+/* Container para ícones, facilitando a organização e o espaçamento entre eles. */
+.icons-container {
+  display: flex;
+  /* Usa flexbox para layout flexível. */
+  gap: 1.2rem;
+  /* Espaçamento entre ícones. */
+  margin-bottom: 3.1rem;
+  /* Espaçamento abaixo do container. */
+}
+
+/* Estilização padrão para parágrafos dentro de <main>, melhorando a legibilidade. */
+main p {
+  margin-bottom: 3.4rem;
+  /* Espaçamento abaixo do parágrafo. */
+  font-size: 1.6rem;
+  /* Tamanho da fonte para legibilidade. */
+  font-weight: 400;
+  /* Peso da fonte normal. */
+  line-height: 160%;
+  /* Altura da linha para espaço adequado entre linhas. */
+}
+
+/* Estilo para itens de listas ou coleções, usando flexbox para layout horizontal. */
+.item {
+  display: flex;
+  /* Layout flexível horizontal. */
+  gap: 1.6rem;
+  /* Espaçamento entre itens. */
+  margin-bottom: 3.2rem;
+  /* Espaçamento abaixo do item. */
+  object-fit: cover;
+  /* Garante que imagens preencham o espaço designado sem distorção. */
+}
+
+/* Estilização para títulos H2 em <aside>, destacando seções secundárias. */
+aside h2 {
+  margin-bottom: 3.2rem;
+  /* Espaçamento abaixo do título. */
+  font-size: 2.4rem;
+  /* Tamanho da fonte para destaque. */
+  font-weight: 700;
+  /* Peso da fonte para maior ênfase. */
+  line-height: 160%;
+  /* Altura da linha para legibilidade. */
+}
+
+/* Estilo para imagens dentro de <figure>, aplicando arredondamento leve nas bordas. */
+section figure img {
+  border-radius: .5rem;
+  /* Bordas levemente arredondadas para estética suave. */
+}
+
+/* Estilização para títulos H3 em <figcaption>, destacando legendas de imagens ou figuras. */
+figcaption h3 {
+  margin-bottom: 1.5rem;
+  /* Espaçamento abaixo do título. */
+  font-size: 18px;
+  /* Tamanho da fonte para legibilidade. */
+  font-weight: 700;
+  /* Peso da fonte para ênfase. */
+  line-height: 160%;
+  /* Altura da linha para espaço adequado entre linhas. */
+}
+
+/* Estilização para parágrafos em <figcaption>, garantindo legibilidade em legendas. */
+figcaption p {
+  font-size: 14px;
+  /* Tamanho da fonte para detalhes. */
+  font-weight: 400;
+  /* Peso da fonte normal. */
+  line-height: 160%;
+  /* Altura da linha para legibilidade. */
+}
+
+/* Estilo para o rodapé, definindo sua posição, cor de fundo e estilização de texto. */
+footer {
+  margin-top: 3.9rem;
+  /* Espaçamento acima do rodapé. */
+  background-color: var(--color-footer);
+  /* Cor de fundo do rodapé. */
+}
+
+/* Estilização para texto dentro do rodapé, incluindo cor, espaçamento e alinhamento. */
+footer p {
+  color: var(--color-search-input-text);
+  /* Cor do texto, para contraste com o fundo. */
+  padding: 1.6rem;
+  /* Espaçamento interno. */
+  text-align: center;
+  /* Alinhamento do texto ao centro. */
+  font-size: 1.6rem;
+  /* Tamanho da fonte para legibilidade. */
+  font-weight: 600;
+  /* Peso da fonte para destaque moderado. */
+}
+
+/* Transição suave para imagens dentro de .item ao passar o mouse, adicionando um efeito visual interativo. */
+.item img {
+  transition: all 200ms ease-out;
+  /* Transição suave para todas as propriedades alteradas. */
+}
+
+/* Estilização específica para imagens dentro de .item ao passar o mouse, criando um efeito visual dinâmico. */
+.item img:hover {
+  filter: hue-rotate(7deg) contrast(101%) saturate(200%);
+  /* Ajusta o filtro para mudança de cor, contraste e saturação. */
+  transform: scale(1.1) rotate(-2deg);
+  /* Aumenta levemente o tamanho e rotaciona a imagem. */
+}
+
+/* Define animações para o cabeçalho, criando um efeito visual de entrada. */
+header {
+  --startY: -100%;
+  /* Variável para controlar a posição inicial da animação no eixo Y. */
+  animation: move .2s;
+  /* Aplica a animação 'move' com duração de 0.2 segundos. */
+}
+
+/* Define animações para o rodapé, similar ao cabeçalho mas iniciando de baixo para cima. */
+footer {
+  --startY: 100%;
+  /* Posição inicial da animação do rodapé, vindo de 100% abaixo. */
+  animation: move .2s;
+  /* Mesma duração da animação aplicada ao cabeçalho. */
+}
+
+/* Keyframes para a animação 'move', usada tanto no cabeçalho quanto no rodapé. */
+@keyframes move {
+  from {
+    transform: translateY(var(--startY));
+    /* Inicia a animação a partir da posição definida pela variável --startY. */
+  }
+
+  /* Automaticamente vai para transform: translateY(0); ao final da animação, não explicitamente definido aqui. */
+}
+
+/* Define animações para itens, com um delay e efeito de aparecimento escalonado. */
+.item {
+  --delay: .4s;
+  /* Variável para controlar o delay antes do início da animação. */
+  animation: appear .4s var(--delay) backwards;
+  /* Aplica a animação 'appear' com duração e delay definidos, começando no estado final da animação. */
+}
+
+/* Keyframes para a animação 'appear', criando um efeito de fade in e expansão. */
+@keyframes appear {
+  0% {
+    opacity: 0;
+    /* Inicia completamente transparente. */
+    transform: scale(0.7);
+    /* Começa um pouco menor que o tamanho normal. */
+  }
+
+  50% {
+    transform: scale(1.2);
+    /* Temporariamente aumenta para maior que o tamanho normal para um efeito de "pulo". */
+  }
+
+  /* Termina em opacity: 1 e transform: scale(1); não explicitamente definido, assumido pelo navegador. */
+}
+
+/* Media query para telas com largura mínima de 1220px, definindo um layout específico para dispositivos maiores. */
+@media (min-width: 1220px) {
+  #central {
+    height: 100%;
+    /* Ajusta a altura para 100% da viewport, não limitando ao tamanho da tela. */
+    grid-template-areas:
+      /* Define as áreas do grid para organização dos elementos. */
+      "header header header"
+      "main main aside"
+      "main main aside"
+      "footer footer footer";
+    grid-template-rows: auto;
+    /* Ajusta as linhas do grid para se adaptarem ao conteúdo. */
+  }
+
+  /* Especifica a localização e estilo do cabeçalho dentro do layout grid. */
+  #central header {
+    grid-area: header;
+    /* Designa a área do grid para o cabeçalho. */
+    background-color: var(--color-Brand-Colors-Explorer-dark);
+    /* Define a cor de fundo do cabeçalho. */
+  }
+
+  /* Configura o posicionamento e margens do conteúdo principal. */
+  #central main {
+    grid-area: main;
+    /* Designa a área do grid para o conteúdo principal. */
+    margin-left: 10.9rem;
+    /* Espaçamento à esquerda para alinhamento. */
+    margin-top: 4.4rem;
+    /* Espaçamento acima para separação do cabeçalho. */
+  }
+
+  /* Ajusta o posicionamento e margens da seção <aside>. */
+  #acentral aside {
+    grid-area: aside;
+    /* Designa a área do grid para o <aside>. */
+    margin-top: 4.4rem;
+    /* Espaçamento acima para alinhamento com o conteúdo principal. */
+  }
+
+  /* Margem superior adicionada ao título dentro de <aside> para espaçamento inicial. */
+  aside h2 {
+    margin-top: 4.4rem;
+  }
+
+  /* Especifica a localização do rodapé dentro do layout grid. */
+  #central footer {
+    grid-area: footer;
+    /* Designa a área do grid para o rodapé. */
+  }
+}
